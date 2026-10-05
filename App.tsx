@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { ArrowRight, Check, ChevronDown, Gem, Instagram, Mail, MapPin, Menu, MessageCircle, Phone, Sparkles, Star, X } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown, Gem, Camera, Mail, MapPin, Menu, MessageCircle, Phone, Sparkles, Star, X } from 'lucide-react';
 import { SERVICES_DATA, GALLERY_ITEMS } from './services';
 import { RESIN_PRODUCTS } from './resinProducts';
 
