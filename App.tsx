@@ -1,1 +1,1 @@
-import { ArrowRight, Check, ChevronDown, Gem, Mail, Sparkles, Menu, MessageCircle, Phone, Star, X, MapPin, Instagram } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown, import { ArrowRight, Check, ChevronDown, Gem, Mail, Sparkles, Menu, MessageCircle, Phone, Star, X, MapPin, Instagram } from 'lucide-react'; Sparkles, Menu, MessageCircle, Phone, Star, X, MapPin, Instagram } from 'lucide-react';
