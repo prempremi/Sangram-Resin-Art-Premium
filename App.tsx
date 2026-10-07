@@ -1,255 +1,133 @@
 import React, { useState } from "react";
 
-const WHATSAPP = "91917873024955";
+const WA = "91917873024955";
 
-const products = [
-  {
-    title: "Resin Wall Art",
-    text: "Luxury handcrafted statement pieces for modern interiors.",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Customized Name Plates",
-    text: "Personalized resin name plates made for your home.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Resin Photo Frames",
-    text: "Preserve your favourite memories in premium resin.",
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Resin Clocks",
-    text: "Elegant handmade clocks designed for premium spaces.",
-    image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Keychains & Gifts",
-    text: "Unique customized gifts for birthdays, weddings and events.",
-    image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Resin Tables",
-    text: "Statement furniture crafted to order with artistic details.",
-    image: "https://images.unsplash.com/photo-1549497538-303791108f95?auto=format&fit=crop&w=1200&q=85",
-  },
+const collections = [
+  ["Resin Wall Art", "Luxury statement art for premium interiors", "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=85"],
+  ["Custom Name Plates", "Personalized entrance pieces made for you", "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85"],
+  ["Resin Photo Frames", "Turn special memories into lasting art", "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=85"],
+  ["Resin Clocks", "Functional décor with handcrafted character", "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1200&q=85"],
+  ["Keychains & Gifts", "Small personalized gifts with big meaning", "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=1200&q=85"],
+  ["Resin Tables", "One-of-a-kind centrepieces made to order", "https://images.unsplash.com/photo-1549497538-303791108f95?auto=format&fit=crop&w=1200&q=85"],
 ];
 
 const gallery = [
-  "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=85",
-  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85",
-  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85",
-  "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85",
-  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
-  "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1000&q=85",
+  "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",
 ];
 
 function App() {
-  const [menu, setMenu] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const whatsapp = (message = "Hello Sangram Resin Art, I want to discuss a customized resin product.") => {
-    window.open(
-      `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
+  const whatsapp = (text = "Hello Sangram Resin Art, I want a customized resin product.") => {
+    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`, "_blank");
   };
 
   return (
-    <div className="site">
+    <div className="app">
       <style>{`
-        *{box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#080706;color:#f8f3e8}
-        a{text-decoration:none;color:inherit}
-        button{font:inherit}
-        .site{min-height:100vh;background:
-          radial-gradient(circle at 12% 5%,rgba(211,164,74,.13),transparent 28%),
-          radial-gradient(circle at 88% 16%,rgba(117,69,170,.12),transparent 25%),
-          #080706;overflow:hidden}
-        .nav{position:sticky;top:0;z-index:50;background:rgba(8,7,6,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
-        .navin{max-width:1180px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
-        .brand{font-family:Georgia,serif;font-size:19px;letter-spacing:2px}
-        .brand small{display:block;color:#caa75b;font:10px Inter,sans-serif;letter-spacing:4px;margin-top:4px}
-        .links{display:flex;gap:26px;color:#c9c1b3;font-size:13px}
-        .links a:hover{color:#fff}
-        .navbtn{border:1px solid #8f6b31;background:transparent;color:#e8c778;padding:10px 16px;border-radius:30px;cursor:pointer}
-        .menubtn{display:none;background:none;border:0;color:#fff;font-size:26px}
-        .hero{max-width:1180px;margin:auto;min-height:720px;padding:110px 24px 90px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:70px}
-        .eyebrow{font-size:11px;letter-spacing:5px;color:#d1ad5f;text-transform:uppercase}
-        h1{font:500 clamp(54px,7vw,92px)/.92 Georgia,serif;margin:22px 0}
-        h1 span{color:#cba45a}
-        .lead{font-size:17px;line-height:1.8;color:#aaa298;max-width:610px}
-        .actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
-        .gold{background:linear-gradient(135deg,#e4c275,#a8792d);color:#100d08;border:0;padding:15px 23px;border-radius:5px;font-weight:800;cursor:pointer}
-        .outline{background:transparent;color:#eee5d7;border:1px solid rgba(255,255,255,.2);padding:14px 23px;border-radius:5px;cursor:pointer}
-        .heroart{height:530px;border-radius:28px;position:relative;overflow:hidden;border:1px solid rgba(218,177,88,.25);background:
-          radial-gradient(circle at 40% 35%,rgba(240,190,76,.8),transparent 8%),
-          radial-gradient(circle at 65% 45%,rgba(126,73,197,.72),transparent 17%),
-          radial-gradient(circle at 45% 70%,rgba(33,104,125,.75),transparent 23%),
-          linear-gradient(145deg,#17130f,#050505 70%);box-shadow:0 35px 100px rgba(0,0,0,.55)}
-        .heroart:before{content:"";position:absolute;inset:14%;border:1px solid rgba(229,195,117,.18);border-radius:50%;box-shadow:0 0 90px rgba(190,145,57,.18)}
-        .heroart:after{content:"SANGRAM\\A RESIN ART";white-space:pre;position:absolute;right:28px;bottom:28px;color:rgba(255,255,255,.45);font:11px/1.7 Inter,sans-serif;letter-spacing:4px;text-align:right}
-        section{max-width:1180px;margin:auto;padding:105px 24px}
-        .sectionhead{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
-        .kicker{color:#caa75b;font-size:11px;letter-spacing:4px;text-transform:uppercase}
-        h2{font:500 clamp(38px,5vw,62px)/1 Georgia,serif;margin:12px 0 0}
-        .muted{color:#928c83;max-width:500px;line-height:1.7}
-        .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-        .card{background:linear-gradient(180deg,#171410,#0d0c0a);border:1px solid rgba(255,255,255,.08);border-radius:18px;overflow:hidden;transition:.35s}
-        .card:hover{transform:translateY(-7px);border-color:rgba(202,167,91,.45)}
-        .card img{width:100%;height:230px;object-fit:cover;display:block}
-        .cardbody{padding:23px}
-        .card h3{font:500 25px Georgia,serif;margin:0 0 9px}
-        .card p{color:#918c84;line-height:1.6;font-size:14px;margin:0}
-        .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
-        .aboutbox{padding:38px;border:1px solid rgba(202,167,91,.2);border-radius:24px;background:linear-gradient(145deg,rgba(202,167,91,.07),rgba(255,255,255,.02))}
-        .aboutbox strong{font:500 54px Georgia,serif;color:#d6b66e}
-        .aboutbox p{color:#9e978e;line-height:1.8}
-        .features{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:25px}
-        .feature{padding:18px;border:1px solid rgba(255,255,255,.07);border-radius:12px;color:#c8c0b5}
-        .feature b{display:block;color:#eee8dd;margin-bottom:5px}
-        .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-        .gallery img{width:100%;height:270px;object-fit:cover;border-radius:14px;opacity:.9;transition:.3s}
-        .gallery img:hover{opacity:1;transform:scale(1.015)}
-        .cta{margin:30px auto 90px;max-width:1132px;padding:70px 40px;text-align:center;border:1px solid rgba(202,167,91,.25);border-radius:26px;background:radial-gradient(circle at 50% 0,rgba(202,167,91,.14),transparent 55%),#100e0b}
-        .cta h2{margin-bottom:15px}
-        .cta p{color:#9e978e;margin:0 auto 28px;max-width:600px;line-height:1.7}
-        footer{border-top:1px solid rgba(255,255,255,.08);padding:35px 24px;color:#817b73}
-        .footin{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}
-        .float{position:fixed;right:22px;bottom:22px;z-index:60;border:0;border-radius:50px;padding:15px 20px;background:#25d366;color:#071108;font-weight:800;box-shadow:0 10px 35px rgba(0,0,0,.4);cursor:pointer}
-        @media(max-width:800px){
-          .links,.navbtn{display:none}.menubtn{display:block}
-          .mobile{display:flex;position:absolute;top:70px;left:0;right:0;background:#0c0b09;border-bottom:1px solid #25221d;flex-direction:column;padding:18px 24px;gap:18px}
-          .hero{grid-template-columns:1fr;padding-top:75px;gap:45px}.heroart{height:390px}
-          .cards{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:30px}.gallery{grid-template-columns:1fr 1fr}.gallery img{height:210px}
-          .sectionhead{display:block}.muted{margin-top:15px}.features{grid-template-columns:1fr}
-        }
-        @media(min-width:801px){.mobile{display:none}}
+        :root{--bg:#070706;--panel:#11100e;--gold:#d9b76a;--cream:#f6efe1;--muted:#a49c90;--line:rgba(255,255,255,.09)}
+        *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,Arial,sans-serif}
+        button,a{font:inherit}a{text-decoration:none;color:inherit}button{cursor:pointer}
+        .app{overflow:hidden;background:
+          radial-gradient(circle at 8% 8%,rgba(211,169,77,.11),transparent 25%),
+          radial-gradient(circle at 92% 18%,rgba(107,61,157,.10),transparent 23%),var(--bg)}
+        .top{height:35px;border-bottom:1px solid var(--line);display:flex;justify-content:center;align-items:center;color:#a99b7b;font-size:10px;letter-spacing:4px;text-transform:uppercase}
+        header{position:sticky;top:0;z-index:99;background:rgba(7,7,6,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+        .nav{max-width:1240px;margin:auto;height:76px;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+        .logo{font-family:Georgia,serif;font-size:21px;letter-spacing:2px}.logo em{display:block;color:var(--gold);font:9px Inter,sans-serif;letter-spacing:5px;font-style:normal;margin-top:5px}
+        .links{display:flex;gap:30px;color:#c1baae;font-size:13px}.links a:hover{color:white}
+        .quote{padding:11px 20px;border:1px solid #8d6c35;border-radius:3px;background:transparent;color:#e3c477}
+        .hamb{display:none;background:none;border:0;color:white;font-size:25px}
+        .hero{max-width:1240px;margin:auto;min-height:770px;padding:80px 24px 110px;display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center}
+        .tag{color:var(--gold);font-size:10px;letter-spacing:5px;text-transform:uppercase}
+        h1{font:500 clamp(58px,7vw,104px)/.86 Georgia,serif;margin:23px 0 28px;letter-spacing:-3px}
+        h1 .gold{color:var(--gold)}
+        .hero p{color:var(--muted);font-size:16px;line-height:1.85;max-width:600px}
+        .buttons{display:flex;gap:12px;margin-top:34px}.primary{border:0;background:linear-gradient(135deg,#ebcb7e,#a47b35);padding:15px 24px;border-radius:3px;color:#171208;font-weight:800}.secondary{border:1px solid #39352e;background:transparent;color:white;padding:14px 23px;border-radius:3px}
+        .visual{height:580px;border-radius:4px;position:relative;overflow:hidden;border:1px solid rgba(217,183,106,.25);background:
+          radial-gradient(ellipse at 65% 30%,rgba(217,183,106,.7),transparent 5%),
+          radial-gradient(ellipse at 55% 42%,rgba(124,71,192,.65),transparent 17%),
+          radial-gradient(ellipse at 38% 64%,rgba(27,112,129,.7),transparent 22%),
+          linear-gradient(145deg,#211a12,#050505 62%);
+          box-shadow:inset 0 0 100px rgba(0,0,0,.5),0 30px 80px rgba(0,0,0,.4)}
+        .visual:before{content:"";position:absolute;width:65%;aspect-ratio:1;border:1px solid rgba(232,199,124,.24);border-radius:50%;left:18%;top:17%;box-shadow:0 0 100px rgba(210,169,74,.12)}
+        .visual .stamp{position:absolute;bottom:30px;right:32px;text-align:right;color:#a99059;font-size:9px;letter-spacing:4px;line-height:2}
+        .side{position:absolute;left:25px;bottom:30px;writing-mode:vertical-rl;color:#746b5b;font-size:9px;letter-spacing:5px}
+        section{max-width:1240px;margin:auto;padding:105px 24px}
+        .intro{display:flex;justify-content:space-between;gap:50px;align-items:end;margin-bottom:45px}.intro h2{font:500 55px/1 Georgia,serif;margin:10px 0 0}.intro p{max-width:430px;color:var(--muted);line-height:1.7;font-size:14px}
+        .eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase}
+        .collections{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{position:relative;background:#100f0d;border:1px solid var(--line);overflow:hidden;min-height:420px}.product img{width:100%;height:275px;object-fit:cover;display:block;filter:saturate(.85)}.product:hover img{filter:saturate(1.15)}.product .info{padding:23px}.product h3{font:500 26px Georgia,serif;margin:0 0 8px}.product p{margin:0;color:#918b81;font-size:13px;line-height:1.6}.number{position:absolute;top:15px;right:15px;background:rgba(7,7,6,.75);border:1px solid rgba(255,255,255,.14);padding:7px 9px;font-size:9px;color:#d7c18e}
+        .statement{max-width:1240px;margin:30px auto 80px;padding:0 24px}.statementBox{min-height:360px;display:grid;place-items:center;text-align:center;border:1px solid rgba(217,183,106,.22);background:radial-gradient(circle,rgba(217,183,106,.12),transparent 48%),#0e0d0b;padding:50px}.statement h2{font:500 clamp(42px,6vw,72px)/.95 Georgia,serif;margin:15px 0}.statement p{color:var(--muted);max-width:600px;line-height:1.8;margin:0 auto 27px}
+        .story{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px;align-items:center}.story h2{font:500 57px/1 Georgia,serif;margin:14px 0 25px}.story p{color:var(--muted);line-height:1.9}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:25px}.stat{border:1px solid var(--line);padding:20px}.stat b{font:500 30px Georgia,serif;color:var(--gold);display:block}.stat span{color:#827b72;font-size:11px}
+        .gallery{display:grid;grid-template-columns:1.4fr .8fr .8fr;grid-template-rows:230px 230px;gap:10px}.gallery img{width:100%;height:100%;object-fit:cover}.gallery img:first-child{grid-row:span 2}.gallery img:hover{filter:brightness(1.1)}
+        .contact{max-width:1240px;margin:0 auto 100px;padding:0 24px}.contactBox{padding:65px 30px;text-align:center;border-top:1px solid #302b22;border-bottom:1px solid #302b22}.contact h2{font:500 58px Georgia,serif;margin:12px 0}.contact p{color:var(--muted);line-height:1.7;max-width:550px;margin:0 auto 25px}
+        footer{border-top:1px solid var(--line);padding:35px 24px}.footerIn{max-width:1240px;margin:auto;display:flex;justify-content:space-between;gap:20px;color:#79736b;font-size:12px}.float{position:fixed;z-index:100;right:23px;bottom:23px;border:0;background:#25d366;color:#061008;padding:14px 19px;border-radius:30px;font-weight:800;box-shadow:0 12px 35px #0008}
+        @media(max-width:850px){.links,.quote{display:none}.hamb{display:block}.hero{grid-template-columns:1fr;padding-top:60px}.visual{height:400px}.collections{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr;gap:35px}.gallery{grid-template-columns:1fr 1fr;grid-template-rows:210px 210px 210px}.gallery img:first-child{grid-row:span 1}.intro{display:block}.intro p{margin-top:15px}}
+        @media(max-width:560px){.top{font-size:8px;letter-spacing:2px}.nav{height:68px}.hero{min-height:auto;padding:65px 18px 80px}.hero h1{font-size:58px}.buttons{flex-direction:column}.visual{height:350px}.collections{grid-template-columns:1fr}section{padding:75px 18px}.intro h2,.story h2,.contact h2{font-size:42px}.gallery{grid-template-columns:1fr;grid-template-rows:250px 180px 180px 180px 180px}.stats{grid-template-columns:1fr}.statement{padding:0 18px}.statementBox{padding:35px 20px}}
       `}</style>
 
-      <header className="nav">
-        <div className="navin">
-          <a href="#home" className="brand">
-            SANGRAM RESIN ART
-            <small>CUSTOMIZED • HANDMADE • UNIQUE</small>
-          </a>
+      <div className="top">Handcrafted in Odisha • Customized • Premium Resin Art</div>
+
+      <header>
+        <div className="nav">
+          <a className="logo" href="#home">SANGRAM RESIN ART<em>CRAFTED FOR YOUR STORY</em></a>
           <nav className="links">
-            <a href="#home">Home</a>
-            <a href="#collections">Collections</a>
-            <a href="#about">About</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
+            <a href="#home">Home</a><a href="#collections">Collections</a><a href="#story">Our Story</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
           </nav>
-          <button className="navbtn" onClick={() => whatsapp()}>Get a Quote</button>
-          <button className="menubtn" onClick={() => setMenu(!menu)}>☰</button>
+          <button className="quote" onClick={() => whatsapp("Hello Sangram Resin Art, I want a quotation.")}>Get a Quote</button>
+          <button className="hamb" onClick={() => setOpen(!open)}>☰</button>
         </div>
-        {menu && (
-          <div className="mobile">
-            <a href="#home" onClick={() => setMenu(false)}>Home</a>
-            <a href="#collections" onClick={() => setMenu(false)}>Collections</a>
-            <a href="#about" onClick={() => setMenu(false)}>About</a>
-            <a href="#gallery" onClick={() => setMenu(false)}>Gallery</a>
-            <a href="#contact" onClick={() => setMenu(false)}>Contact</a>
-          </div>
-        )}
+        {open && <div style={{background:"#0c0b09",padding:"20px 24px",display:"grid",gap:18,borderTop:"1px solid #25221d"}}>
+          {["home","collections","story","gallery","contact"].map(x=><a key={x} href={"#"+x} onClick={()=>setOpen(false)} style={{color:"#ddd",textTransform:"capitalize"}}>{x}</a>)}
+        </div>}
       </header>
 
       <main>
         <section className="hero" id="home">
           <div>
-            <div className="eyebrow">Premium Resin Crafts • Odisha</div>
-            <h1>Art that makes<br/><span>memories shine.</span></h1>
-            <p className="lead">
-              Bespoke handcrafted resin art created for homes, weddings, gifts,
-              celebrations and premium interiors. Designed around your story,
-              colours and imagination.
-            </p>
-            <div className="actions">
-              <button className="gold" onClick={() => whatsapp("Hello Sangram Resin Art, I want a custom resin design.")}>Order on WhatsApp</button>
-              <a className="outline" href="#collections">Explore Collection</a>
+            <div className="tag">Premium Resin Crafts • Odisha</div>
+            <h1>Where <span className="gold">art</span><br/>becomes a<br/><span className="gold">memory.</span></h1>
+            <p>Unique resin creations, personalized gifts and statement décor — designed around your imagination and handcrafted with a premium finish.</p>
+            <div className="buttons">
+              <button className="primary" onClick={() => whatsapp("Hello Sangram Resin Art, I want to create a custom resin piece.")}>Start a Custom Order →</button>
+              <a className="secondary" href="#collections">View Collections</a>
             </div>
           </div>
-          <div className="heroart" aria-label="Premium resin artwork visual" />
+          <div className="visual"><div className="side">SANGRAM • RESIN • ART</div><div className="stamp">HANDMADE<br/>CUSTOMIZED<br/>UNIQUE</div></div>
         </section>
 
         <section id="collections">
-          <div className="sectionhead">
-            <div>
-              <div className="kicker">Our Collection</div>
-              <h2>Made to be remembered.</h2>
-            </div>
-            <p className="muted">From elegant home décor to personalized gifts, every piece is made with patience, detail and a premium finish.</p>
-          </div>
-          <div className="cards">
-            {products.map((p) => (
-              <article className="card" key={p.title}>
-                <img src={p.image} alt={p.title}/>
-                <div className="cardbody">
-                  <h3>{p.title}</h3>
-                  <p>{p.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <div className="intro"><div><div className="eyebrow">The Collection</div><h2>Made for your space.</h2></div><p>Every piece begins with an idea. Choose a category now; your own product photos can be added later as the collection grows.</p></div>
+          <div className="collections">{collections.map((c,i)=><article className="product" key={c[0]}><span className="number">0{i+1}</span><img src={c[2]} alt={c[0]}/><div className="info"><h3>{c[0]}</h3><p>{c[1]}</p></div></article>)}</div>
         </section>
 
-        <section id="about">
-          <div className="about">
-            <div className="aboutbox">
-              <strong>01</strong>
-              <h2>Crafted with intention.</h2>
-              <p>
-                Sangram Resin Art creates customized handmade pieces with a focus
-                on clean finishing, rich colours and personal storytelling.
-              </p>
-            </div>
-            <div>
-              <div className="kicker">Why Sangram Resin Art</div>
-              <h2>Luxury handmade.<br/>Personal to you.</h2>
-              <div className="features">
-                <div className="feature"><b>Customized Designs</b>Every order can be created around your idea.</div>
-                <div className="feature"><b>Premium Finish</b>Careful detailing for a polished result.</div>
-                <div className="feature"><b>Made for Gifting</b>Perfect for weddings, birthdays and special moments.</div>
-                <div className="feature"><b>Made to Order</b>We discuss size, colours and requirements before production.</div>
-              </div>
-            </div>
+        <div className="statement">
+          <div className="statementBox">
+            <div><div className="eyebrow">Not mass produced</div><h2>Your idea.<br/><span style={{color:"var(--gold)"}}>Your resin.</span></h2><p>From a name plate for your new home to a wedding keepsake or a dramatic resin table, we create pieces that feel personal.</p><button className="primary" onClick={() => whatsapp()}>Discuss Your Idea</button></div>
+          </div>
+        </div>
+
+        <section id="story">
+          <div className="story">
+            <div><div className="eyebrow">Sangram Resin Art</div><h2>Crafted slowly.<br/>Made to last.</h2><p>We believe handmade art should feel different. Our focus is customization, clean finishing and designs that carry a story.</p><p>Send your reference, size, colour ideas and requirements on WhatsApp. We will discuss the design before your order is made.</p></div>
+            <div className="stats"><div className="stat"><b>100%</b><span>Customized approach</span></div><div className="stat"><b>01</b><span>Design made around you</span></div><div className="stat"><b>∞</b><span>Ideas & possibilities</span></div><div className="stat"><b>Premium</b><span>Handcrafted finish</span></div></div>
           </div>
         </section>
 
         <section id="gallery">
-          <div className="sectionhead">
-            <div>
-              <div className="kicker">Visual Stories</div>
-              <h2>Our inspiration.</h2>
-            </div>
-            <p className="muted">Replace these sample images with your own resin artwork photos anytime.</p>
-          </div>
-          <div className="gallery">
-            {gallery.map((src, i) => <img key={src} src={src} alt={`Resin art inspiration ${i + 1}`} />)}
-          </div>
+          <div className="intro"><div><div className="eyebrow">Visual Journal</div><h2>Inspiration.</h2></div><p>These are temporary visuals. Replace them later with your own resin artwork photos without changing the website structure.</p></div>
+          <div className="gallery">{gallery.map((g,i)=><img key={g} src={g} alt={"Resin art inspiration "+(i+1)}/>)}</div>
         </section>
 
-        <div className="cta" id="contact">
-          <div className="kicker">Start Your Custom Order</div>
-          <h2>Have an idea?<br/>Let's make it real.</h2>
-          <p>
-            Send your reference photo, product type, size, colours and requirements
-            on WhatsApp. We will discuss the design and quotation with you.
-          </p>
-          <button className="gold" onClick={() => whatsapp("Hello Sangram Resin Art, I want to get a quotation for a customized resin product.")}>
-            WhatsApp for a Quote
-          </button>
-        </div>
+        <div className="contact" id="contact"><div className="contactBox"><div className="eyebrow">Let's Create</div><h2>Have an idea?</h2><p>Tell us what you want to create. We will discuss the design, size, colours and quotation directly on WhatsApp.</p><button className="primary" onClick={()=>whatsapp("Hello Sangram Resin Art, I have an idea for a customized resin product.")}>WhatsApp Us →</button></div></div>
       </main>
 
-      <footer>
-        <div className="footin">
-          <div>© {new Date().getFullYear()} Sangram Resin Art. All rights reserved.</div>
-          <div>Customized • Handmade • Unique</div>
-        </div>
-      </footer>
-
-      <button className="float" onClick={() => whatsapp()}>💬 WhatsApp</button>
+      <footer><div className="footerIn"><span>© {new Date().getFullYear()} SANGRAM RESIN ART</span><span>CUSTOMIZED • HANDMADE • UNIQUE</span></div></footer>
+      <button className="float" onClick={()=>whatsapp()}>💬 WhatsApp</button>
     </div>
   );
 }
